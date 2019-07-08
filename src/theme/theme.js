@@ -1,6 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 
 const theme = createMuiTheme({
+    /*
     palette: {
         primary: {
             dark: '#0f0f0f',
@@ -26,7 +27,7 @@ const theme = createMuiTheme({
             hover: 'yellow',
         }
     },
-    
+    */
 })
 
 export default theme

@@ -1,6 +1,7 @@
 import React from 'react'
-import { TextField, } from '@material-ui/core'
-import useStyle from './LoginForm.style'
+
+import LoginForm from './LoginForm'
+import useStyle from './Start.style'
 
 function Start() {
 
@@ -8,7 +9,7 @@ function Start() {
 
     return(
         <div>
-            xdxd
+            <LoginForm/>
         </div>
     )
 }
