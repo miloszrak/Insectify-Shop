@@ -1,13 +1,14 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, } from "react-router-dom"
-import Button from '@material-ui/core/Button'
+import React, { useContext } from 'react'
+import { BrowserRouter as Router, Link} from "react-router-dom"
 
-import LoginForm from '../pages/Login/LoginForm'
-import RegisterForm from '../pages/Register/RegisterForm'
-import Home from '../pages/Home'
 import useStyle from './Layout.style'
+import AuthContext from '../../services/Auth/AuthContext';
+import AuthorizedRoots from '../pages/AuthorizedRoots'
+import UnauthorizedRoots from '../pages/UnauthorizedRoots'
 
 function Layout() {
+
+    const {user, setUser} = useContext(AuthContext)
 
     const classes = useStyle()
 
@@ -15,15 +16,17 @@ function Layout() {
         <Router>
             <div className={classes.header}>
                 <ul>
-                <Button href="/">Home</Button>
-                <Button href="/login">Log In</Button>
-                <Button href="/register">Register</Button>
+                <Link to="/">Home</Link>
+                <Link to="/login">Log In</Link>
+                <Link to="/register">Register</Link>
                 </ul>
             </div>
             <div>
-                <Route exact path="/" component={Home}/>
-                <Route path="/login" component={LoginForm}/>
-                <Route path="/register" component={RegisterForm}/>
+                {user ? (
+                    <AuthorizedRoots/>
+                ) : (
+                    <UnauthorizedRoots/>
+                )}
             </div>
         </Router>
     )
